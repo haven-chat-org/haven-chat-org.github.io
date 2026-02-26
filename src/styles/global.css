@@ -431,6 +431,146 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
+   WHY HAVEN (Discord/PERSONA comparison)
+   ═══════════════════════════════════════════════════ */
+.why-haven {
+  background: var(--bg-darkest);
+  overflow: hidden;
+}
+.why-haven-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 56px;
+  align-items: center;
+}
+.why-haven-text {
+  text-align: left;
+}
+.why-haven-body {
+  font-size: 1rem;
+  color: var(--text-normal);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  max-width: 540px;
+}
+.why-haven-body strong {
+  color: var(--text-header);
+  font-weight: 600;
+}
+.why-haven-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.why-haven-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color var(--transition), gap var(--transition);
+}
+.why-haven-source:hover {
+  color: var(--text-header);
+  gap: 10px;
+}
+.why-haven-source svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Comparison cards */
+.why-haven-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.comparison-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color var(--transition-slow), transform var(--transition-slow);
+}
+.comparison-card:hover {
+  transform: translateY(-2px);
+}
+.comparison-them {
+  background: var(--bg-dark);
+}
+.comparison-them:hover {
+  border-color: rgba(242, 115, 119, 0.3);
+}
+.comparison-us {
+  background: var(--bg-dark);
+}
+.comparison-us:hover {
+  border-color: rgba(35, 177, 90, 0.3);
+}
+.comparison-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.comparison-header svg,
+.comparison-header img {
+  width: 20px;
+  height: 20px;
+}
+.comparison-header--red {
+  background: rgba(242, 115, 119, 0.08);
+  color: var(--red);
+  border-bottom: 1px solid rgba(242, 115, 119, 0.15);
+}
+.comparison-header--red svg {
+  color: var(--red);
+}
+.comparison-header--green {
+  background: rgba(35, 177, 90, 0.08);
+  color: var(--green);
+  border-bottom: 1px solid rgba(35, 177, 90, 0.15);
+}
+.comparison-header--green img {
+  border-radius: 4px;
+}
+.comparison-list {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.comparison-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+.comparison-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.comparison-item--bad {
+  color: var(--text-muted);
+}
+.comparison-item--bad svg {
+  color: var(--red);
+}
+.comparison-item--good {
+  color: var(--text-normal);
+}
+.comparison-item--good svg {
+  color: var(--green);
+}
+
+/* ═══════════════════════════════════════════════════
    APP PREVIEW
    ═══════════════════════════════════════════════════ */
 .preview {
@@ -822,6 +962,8 @@ body {
 .stagger > :nth-child(2) { transition-delay: 0.1s; }
 .stagger > :nth-child(3) { transition-delay: 0.15s; }
 .stagger > :nth-child(4) { transition-delay: 0.2s; }
+.stagger > :nth-child(5) { transition-delay: 0.25s; }
+.stagger > :nth-child(6) { transition-delay: 0.3s; }
 
 /* ═══════════════════════════════════════════════════
    RESPONSIVE — Tablet (768px+)
@@ -832,6 +974,14 @@ body {
   .section-heading { font-size: 3rem; }
 
   .values-grid { grid-template-columns: 1fr 1fr; }
+
+  .why-haven-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .why-haven-comparison {
+    gap: 20px;
+  }
 
   .beta-form {
     flex-direction: row;
@@ -865,6 +1015,7 @@ body {
 @media (min-width: 1024px) {
   .hero-headline { font-size: 3.75rem; }
   .section-heading { font-size: 3rem; }
+  .values-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 
 /* ═══════════════════════════════════════════════════
