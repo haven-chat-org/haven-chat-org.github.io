@@ -1,0 +1,152 @@
+---
+---
+
+<section class="section under-hood" aria-label="Under the Hood">
+  <div class="container">
+    <div class="section-center">
+      <span class="section-label">Under the Hood</span>
+      <h2 class="section-heading">Built on proven cryptography</h2>
+      <p class="section-sub">
+        Haven uses the same encryption protocols trusted by Signal — implemented in open source, auditable code.
+      </p>
+    </div>
+
+    <!-- Crypto stack -->
+    <div class="crypto-grid stagger">
+      <div class="crypto-card animate-on-scroll">
+        <div class="crypto-icon-row">
+          <div class="crypto-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 11-7.78 7.78 5.5 5.5 0 017.78-7.78zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="crypto-title">X3DH + Double Ratchet</h3>
+        <p class="crypto-label">Direct Messages</p>
+        <p class="crypto-desc">The Signal Protocol. Forward secrecy and break-in recovery for every DM conversation. Keys ratchet after every message — compromising one key reveals nothing else.</p>
+      </div>
+
+      <div class="crypto-card animate-on-scroll">
+        <div class="crypto-icon-row">
+          <div class="crypto-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="crypto-title">Sender Keys</h3>
+        <p class="crypto-label">Server Channels</p>
+        <p class="crypto-desc">Each member generates a symmetric sender key per channel. Messages encrypt once — not per-recipient. Efficient group E2EE without sacrificing security.</p>
+      </div>
+
+      <div class="crypto-card animate-on-scroll">
+        <div class="crypto-icon-row">
+          <div class="crypto-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0110 0v4"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="crypto-title">XChaCha20-Poly1305</h3>
+        <p class="crypto-label">Encryption Cipher</p>
+        <p class="crypto-desc">AEAD encryption for all messages and files. 256-bit keys, 192-bit nonces, and built-in authentication. Powered by libsodium.</p>
+      </div>
+
+      <div class="crypto-card animate-on-scroll">
+        <div class="crypto-icon-row">
+          <div class="crypto-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="crypto-title">Argon2id + Ed25519</h3>
+        <p class="crypto-label">Auth & Signing</p>
+        <p class="crypto-desc">Passwords hashed with Argon2id (OWASP-recommended). Identity keys use Ed25519 for digital signatures. Exports are cryptographically signed and verifiable.</p>
+      </div>
+    </div>
+
+    <!-- Features divider -->
+    <div class="features-divider">
+      <span class="section-label">Beyond encryption</span>
+      <h2 class="section-heading" style="font-size: 2rem;">Features that respect your data</h2>
+    </div>
+
+    <!-- Feature rows -->
+    <div class="feature-list">
+      <div class="feature-row animate-on-scroll">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3 class="feature-title">Download your messages</h3>
+          <p class="feature-desc">Export entire servers, individual channels, or DM conversations as <code>.haven</code> archive files. Your data, your backup — always.</p>
+        </div>
+      </div>
+
+      <div class="feature-row animate-on-scroll">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3 class="feature-title">Offline archive viewer</h3>
+          <p class="feature-desc">Open <code>.haven</code> exports in our <a href="https://haven-chat-org.github.io/archive-viewer/" target="_blank" rel="noopener" class="value-inline-link">companion viewer</a> — entirely offline, directly in your browser. No uploads, no server, no dependencies.</p>
+        </div>
+      </div>
+
+      <div class="feature-row animate-on-scroll">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="16 16 12 12 8 16"/>
+            <line x1="12" y1="12" x2="12" y2="21"/>
+            <path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3 class="feature-title">Backup & restore servers</h3>
+          <p class="feature-desc">Back up your entire server structure — channels, categories, roles, permissions — and restore it anywhere. Import messages to preserve history across migrations.</p>
+        </div>
+      </div>
+
+      <div class="feature-row animate-on-scroll">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3 class="feature-title">Encrypted key backup</h3>
+          <p class="feature-desc">Protect your encryption keys with a security phrase. Argon2id key derivation, encrypted at rest. Restore your sessions seamlessly across devices — without trusting the server.</p>
+        </div>
+      </div>
+
+      <div class="feature-row animate-on-scroll">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <h3 class="feature-title">Signed & verifiable exports</h3>
+          <p class="feature-desc">Every export is signed with your Ed25519 identity key. Anyone can verify the authenticity and integrity of an archive — no account required.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -429,6 +429,16 @@ body {
   width: 14px;
   height: 14px;
 }
+.value-inline-link {
+  color: var(--blurple);
+  text-decoration: underline;
+  text-decoration-color: rgba(88, 101, 242, 0.4);
+  text-underline-offset: 2px;
+  transition: text-decoration-color var(--transition);
+}
+.value-inline-link:hover {
+  text-decoration-color: var(--blurple);
+}
 
 /* ═══════════════════════════════════════════════════
    WHY HAVEN (Discord/PERSONA comparison)
@@ -642,6 +652,135 @@ body {
 .browser-content img {
   width: 100%;
   height: auto;
+}
+
+/* ═══════════════════════════════════════════════════
+   UNDER THE HOOD (Tech stack + Features)
+   ═══════════════════════════════════════════════════ */
+.under-hood {
+  background: var(--bg-dark);
+}
+
+/* Crypto cards grid */
+.crypto-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 48px;
+}
+.crypto-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  transition: border-color var(--transition-slow), transform var(--transition-slow);
+}
+.crypto-card:hover {
+  border-color: rgba(88, 101, 242, 0.3);
+  transform: translateY(-2px);
+}
+.crypto-icon-row {
+  margin-bottom: 16px;
+}
+.crypto-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(88, 101, 242, 0.1);
+  border-radius: var(--radius);
+}
+.crypto-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--blurple);
+}
+.crypto-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-header);
+  margin-bottom: 4px;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  letter-spacing: -0.01em;
+}
+.crypto-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--blurple);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.crypto-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* Features divider */
+.features-divider {
+  text-align: center;
+  margin-top: 96px;
+  margin-bottom: 48px;
+}
+.features-divider .section-label {
+  margin-bottom: 12px;
+}
+
+/* Feature rows */
+.feature-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  transition: background var(--transition-slow);
+}
+.feature-row:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.feature-icon-wrap {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(88, 101, 242, 0.08);
+  border: 1px solid rgba(88, 101, 242, 0.15);
+  border-radius: var(--radius);
+}
+.feature-icon-wrap svg {
+  width: 20px;
+  height: 20px;
+  color: var(--blurple);
+}
+.feature-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-header);
+  margin-bottom: 4px;
+}
+.feature-desc {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.feature-desc code {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", monospace;
+  font-size: 0.85em;
+  background: rgba(88, 101, 242, 0.1);
+  color: var(--blurple);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -975,6 +1114,8 @@ body {
 
   .values-grid { grid-template-columns: 1fr 1fr; }
 
+  .crypto-grid { grid-template-columns: 1fr 1fr; }
+
   .why-haven-layout {
     grid-template-columns: 1fr 1fr;
     gap: 64px;
@@ -1003,9 +1144,17 @@ body {
     padding-right: 48px;
     justify-content: flex-end;
   }
+  .timeline-item:nth-child(odd) .timeline-dot {
+    left: auto;
+    right: -7px;
+  }
   .timeline-item:nth-child(even) {
     margin-left: 50%;
     padding-left: 48px;
+  }
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: -7px;
+    transform: none;
   }
 }
 
@@ -1016,6 +1165,7 @@ body {
   .hero-headline { font-size: 3.75rem; }
   .section-heading { font-size: 3rem; }
   .values-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .crypto-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 /* ═══════════════════════════════════════════════════
