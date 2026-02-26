@@ -1,0 +1,87 @@
+---
+const features = [
+  { name: "End-to-end encryption", haven: true, discord: false, signal: true, matrix: "partial", note: "Matrix is opt-in per room" },
+  { name: "Encrypted file sharing", haven: true, discord: false, signal: true, matrix: "partial", note: "Matrix is opt-in" },
+  { name: "Servers & channels", haven: true, discord: true, signal: false, matrix: true, note: "" },
+  { name: "Voice & screen share", haven: true, discord: true, signal: "partial", matrix: true, note: "Signal is 1-on-1 only" },
+  { name: "Roles & permissions", haven: true, discord: true, signal: false, matrix: "partial", note: "" },
+  { name: "Rich text & embeds", haven: true, discord: true, signal: false, matrix: "partial", note: "" },
+  { name: "Open source", haven: true, discord: false, signal: true, matrix: true, note: "" },
+  { name: "Self-hostable", haven: true, discord: false, signal: "partial", matrix: true, note: "" },
+  { name: "No tracking / telemetry", haven: true, discord: false, signal: true, matrix: "partial", note: "Matrix varies by server" },
+  { name: "No setup required", haven: true, discord: true, signal: true, matrix: false, note: "Matrix requires homeserver" },
+  { name: "i18n (multi-language)", haven: true, discord: "partial", signal: true, matrix: true, note: "" },
+  { name: "Accessibility (a11y)", haven: true, discord: "partial", signal: "partial", matrix: "partial", note: "" },
+];
+
+function icon(val: boolean | string) {
+  if (val === true) return "yes";
+  if (val === false) return "no";
+  return "partial";
+}
+---
+
+<section class="section comparison" aria-label="Platform Comparison">
+  <div class="container section-center">
+    <span class="section-label">How we compare</span>
+    <h2 class="section-heading">Haven vs. the alternatives</h2>
+    <p class="section-sub">
+      No compromises. Haven combines the features you expect with the privacy you deserve.
+    </p>
+
+    <div class="comparison-table-wrap animate-on-scroll">
+      <table class="comparison-table" role="table">
+        <thead>
+          <tr>
+            <th class="ct-feature">Feature</th>
+            <th class="ct-haven">
+              <img src="/havenicon.png" alt="" width="20" height="20" class="ct-logo" />
+              Haven
+            </th>
+            <th>Discord</th>
+            <th>Signal</th>
+            <th>Matrix</th>
+          </tr>
+        </thead>
+        <tbody>
+          {features.map((f) => (
+            <tr>
+              <td class="ct-feature">
+                {f.name}
+                {f.note && <span class="ct-note">{f.note}</span>}
+              </td>
+              <td class="ct-haven">
+                <span class={`ct-icon ct-${icon(f.haven)}`} aria-label={icon(f.haven)}>
+                  {f.haven === true && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>}
+                  {f.haven === false && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7a1 1 0 00-1.4 1.4L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/></svg>}
+                  {f.haven === "partial" && <span class="ct-dash">~</span>}
+                </span>
+              </td>
+              <td>
+                <span class={`ct-icon ct-${icon(f.discord)}`} aria-label={icon(f.discord)}>
+                  {f.discord === true && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>}
+                  {f.discord === false && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7a1 1 0 00-1.4 1.4L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/></svg>}
+                  {f.discord === "partial" && <span class="ct-dash">~</span>}
+                </span>
+              </td>
+              <td>
+                <span class={`ct-icon ct-${icon(f.signal)}`} aria-label={icon(f.signal)}>
+                  {f.signal === true && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>}
+                  {f.signal === false && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7a1 1 0 00-1.4 1.4L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/></svg>}
+                  {f.signal === "partial" && <span class="ct-dash">~</span>}
+                </span>
+              </td>
+              <td>
+                <span class={`ct-icon ct-${icon(f.matrix)}`} aria-label={icon(f.matrix)}>
+                  {f.matrix === true && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>}
+                  {f.matrix === false && <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.3 5.7a1 1 0 00-1.4 0L12 10.6 7.1 5.7a1 1 0 00-1.4 1.4L10.6 12l-4.9 4.9a1 1 0 101.4 1.4L12 13.4l4.9 4.9a1 1 0 001.4-1.4L13.4 12l4.9-4.9a1 1 0 000-1.4z"/></svg>}
+                  {f.matrix === "partial" && <span class="ct-dash">~</span>}
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
