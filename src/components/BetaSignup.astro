@@ -1,20 +1,15 @@
 ---
 ---
 
-<section class="section beta section-center" id="beta" aria-label="Join the beta">
+<section class="section beta section-center" id="beta" aria-label="Request a beta code">
   <div class="container">
     <span class="section-label">Closed Beta</span>
-    <h2 class="section-heading animate-on-scroll">Be the first to know</h2>
+    <h2 class="section-heading animate-on-scroll">Get early access</h2>
     <p class="section-sub animate-on-scroll" style="margin: 0 auto;">
-      Join the waitlist and we'll send you an invite when Haven is ready for you.
+      Enter your email and we'll send you a beta code instantly. Your email is never stored.
     </p>
 
-    <form
-      class="beta-form animate-on-scroll"
-      id="beta-form"
-      action="https://formspree.io/f/PLACEHOLDER"
-      method="POST"
-    >
+    <form class="beta-form animate-on-scroll" id="beta-form">
       <input
         type="email"
         name="email"
@@ -24,8 +19,7 @@
         autocomplete="email"
         aria-label="Email address"
       />
-      <input type="hidden" name="_subject" value="New Haven Beta Signup" />
-      <button type="submit" class="beta-btn">Join Waitlist</button>
+      <button type="submit" class="beta-btn">Get Beta Code</button>
     </form>
 
     <div class="beta-success" id="beta-success" role="status">
@@ -33,43 +27,56 @@
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
         <polyline points="22 4 12 14.01 9 11.01"/>
       </svg>
-      You're on the list! We'll be in touch.
+      Check your inbox! Your beta code is on its way.
     </div>
 
     <div class="beta-error" id="beta-error" role="alert"></div>
+
+    <p class="beta-privacy animate-on-scroll">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" style="display:inline;vertical-align:-3px;margin-right:4px;" aria-hidden="true">
+        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+        <path d="M7 11V7a5 5 0 0110 0v4"/>
+      </svg>
+      Your email is used once to send the code, then permanently discarded.
+    </p>
   </div>
 </section>
 
 <script is:inline>
   (function () {
-    const form = document.getElementById("beta-form");
-    const success = document.getElementById("beta-success");
-    const error = document.getElementById("beta-error");
+    var API_URL = "https://www.discordsucks.org/api/v1/beta/request-code";
+    var form = document.getElementById("beta-form");
+    var success = document.getElementById("beta-success");
+    var error = document.getElementById("beta-error");
     if (!form) return;
 
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
       error.classList.remove("show");
-      const btn = form.querySelector(".beta-btn");
-      const originalText = btn.textContent;
+      var btn = form.querySelector(".beta-btn");
+      var originalText = btn.textContent;
       btn.textContent = "Sending...";
       btn.disabled = true;
 
       try {
-        const res = await fetch(form.action, {
+        var email = form.querySelector('input[name="email"]').value;
+        var res = await fetch(API_URL, {
           method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" },
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: email }),
         });
 
         if (res.ok) {
           form.style.display = "none";
           success.classList.add("show");
+        } else if (res.status === 429) {
+          throw new Error("Too many requests. Please try again in a minute.");
         } else {
-          throw new Error("Submission failed");
+          var data = await res.json().catch(function () { return {}; });
+          throw new Error(data.error || "Something went wrong. Please try again.");
         }
       } catch (err) {
-        error.textContent = "Something went wrong. Please try again.";
+        error.textContent = err.message || "Something went wrong. Please try again.";
         error.classList.add("show");
         btn.textContent = originalText;
         btn.disabled = false;
