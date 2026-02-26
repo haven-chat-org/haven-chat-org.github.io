@@ -1,0 +1,71 @@
+---
+const milestones = [
+  {
+    title: "Subscription Tiers",
+    desc: "Sustainable funding for servers, domains, and development. Free tier always available.",
+    badge: "Planning",
+    badgeClass: "badge-planning",
+  },
+  {
+    title: "Federation",
+    desc: "Connect your Haven instance with others. Your server, your rules, but part of a larger network.",
+    badge: "Researching",
+    badgeClass: "badge-research",
+  },
+  {
+    title: "Forums",
+    desc: "Long-form discussions accessible in-app and on the web. Think Reddit meets Discord Forums.",
+    badge: "Prototyping",
+    badgeClass: "badge-prototype",
+  },
+  {
+    title: "Mobile & Desktop Apps",
+    desc: "Native apps for iOS, Android, macOS, Windows, and Linux.",
+    badge: "In Progress",
+    badgeClass: "badge-progress",
+  },
+];
+---
+
+<section class="section roadmap" aria-label="Roadmap">
+  <div class="container section-center">
+    <span class="section-label">Roadmap</span>
+    <h2 class="section-heading">What's next</h2>
+    <p class="section-sub">
+      Haven is actively evolving. Here's what we're building toward.
+    </p>
+    <div class="timeline" id="timeline">
+      {milestones.map((m, i) => (
+        <div class:list={[
+          "timeline-item",
+          i % 2 === 0 ? "animate-from-left" : "animate-from-right",
+        ]}>
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class:list={["timeline-badge", m.badgeClass]}>{m.badge}</span>
+            <h3 class="timeline-title">{m.title}</h3>
+            <p class="timeline-desc">{m.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const timeline = document.getElementById("timeline");
+    if (!timeline || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          timeline.classList.add("line-drawn");
+          observer.unobserve(timeline);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(timeline);
+  })();
+</script>

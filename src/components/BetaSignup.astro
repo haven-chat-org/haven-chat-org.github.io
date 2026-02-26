@@ -1,0 +1,79 @@
+---
+---
+
+<section class="section beta section-center" id="beta" aria-label="Join the beta">
+  <div class="container">
+    <span class="section-label">Closed Beta</span>
+    <h2 class="section-heading animate-on-scroll">Be the first to know</h2>
+    <p class="section-sub animate-on-scroll" style="margin: 0 auto;">
+      Join the waitlist and we'll send you an invite when Haven is ready for you.
+    </p>
+
+    <form
+      class="beta-form animate-on-scroll"
+      id="beta-form"
+      action="https://formspree.io/f/PLACEHOLDER"
+      method="POST"
+    >
+      <input
+        type="email"
+        name="email"
+        class="beta-input"
+        placeholder="you@example.com"
+        required
+        autocomplete="email"
+        aria-label="Email address"
+      />
+      <input type="hidden" name="_subject" value="New Haven Beta Signup" />
+      <button type="submit" class="beta-btn">Join Waitlist</button>
+    </form>
+
+    <div class="beta-success" id="beta-success" role="status">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/>
+        <polyline points="22 4 12 14.01 9 11.01"/>
+      </svg>
+      You're on the list! We'll be in touch.
+    </div>
+
+    <div class="beta-error" id="beta-error" role="alert"></div>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const form = document.getElementById("beta-form");
+    const success = document.getElementById("beta-success");
+    const error = document.getElementById("beta-error");
+    if (!form) return;
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+      error.classList.remove("show");
+      const btn = form.querySelector(".beta-btn");
+      const originalText = btn.textContent;
+      btn.textContent = "Sending...";
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+
+        if (res.ok) {
+          form.style.display = "none";
+          success.classList.add("show");
+        } else {
+          throw new Error("Submission failed");
+        }
+      } catch (err) {
+        error.textContent = "Something went wrong. Please try again.";
+        error.classList.add("show");
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }
+    });
+  })();
+</script>

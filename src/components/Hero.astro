@@ -1,0 +1,36 @@
+---
+---
+
+<section class="hero" id="hero" aria-label="Welcome to Haven">
+  <div class="hero-content">
+    <img src="/havenicon.png" alt="Haven logo" class="hero-logo" width="80" height="80" />
+    <h1 class="hero-headline">Your conversations.<br/>Your keys. <em>Your rules.</em></h1>
+    <p class="hero-sub">
+      End-to-end encrypted chat with Discord-level features and Signal-level privacy.
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="#beta" class="btn-cta hero-cta">Join the Beta</a>
+      <p class="hero-note">Currently in closed beta — hosted in the EU</p>
+    </div>
+  </div>
+  <div class="scroll-hint" id="scroll-hint">
+    <span class="scroll-hint-text">Scroll</span>
+    <svg class="scroll-hint-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    const hint = document.getElementById("scroll-hint");
+    if (!hint) return;
+    let hidden = false;
+    window.addEventListener("scroll", function () {
+      if (!hidden && window.scrollY > 100) {
+        hint.classList.add("hidden");
+        hidden = true;
+      }
+    }, { passive: true });
+  })();
+</script>
